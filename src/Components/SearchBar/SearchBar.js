@@ -18,11 +18,16 @@ class SearchBar extends React.Component{
       return event.target.value;
   }
 
+//This feature makes user do less work by hitting "Enter Key" instead of hitting "Search Button"
+  handleEnterKey(event){
+    if(event.key === 'Enter') {
+      return this.props.onSearch(this.state.term)
+    }
+    return;
+  }
 
   search(){
-    if(!this.state.term){
-      return;
-    }
+
     this.props.onSearch(this.state.term);
   }
 
@@ -30,7 +35,9 @@ class SearchBar extends React.Component{
     return(
       <div className="SearchBar">
         <input placeholder="Enter A Song, Album, or Artist"
-         onChange = {this.handleTermChange}/>
+         onChange = {this.handleTermChange}
+         onKeyPress = {this.handleEnterKey}
+         />
         <a onClick= {this.search}>SEARCH</a>
       </div>
     );
