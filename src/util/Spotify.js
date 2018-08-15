@@ -2,7 +2,8 @@ let accessToken = '';
 
 const clientID = '0dc07a46aa994ab28d4a6d248448cb82';
 const redirectURI = 'http://localhost:3000/';
-const Spotify{
+
+const Spotify =  {
 
   getAccessToken(){
 
@@ -50,45 +51,45 @@ const Spotify{
     })
   },
   //creates a playlist in user's Spotify account
-savePlaylist(playlistName, trackURIs) {
-  if (!playlistName || !trackURIs.length) {
-    return;
-  }
-
-  const accessToken = Spotify.getAccessToken();
-  const headers = {Authorization: `Bearer ${accessToken}`};
-  let userId;
-
-  // request to return user's Spotify username
-  return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
-    if (response.ok) {
-      return response.json();
+  savePlaylist(playlistName, trackURIs) {
+    if (!playlistName || !trackURIs.length) {
+      return;
     }
-    throw new Error('Request failed!');
-  }).then(jsonResponse => {
-    userId = jsonResponse.id;
 
-    // POST request to create new playlist
-    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-      headers: headers,
-      method: 'POST',
-      body: JSON.stringify({ name: playlistName })
-    }).then(response => {
+    const accessToken = Spotify.getAccessToken();
+    const headers = {Authorization: `Bearer ${accessToken}`};
+    let userId;
+
+    
+    return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
       if (response.ok) {
         return response.json();
       }
       throw new Error('Request failed!');
     }).then(jsonResponse => {
-      const playlistId = jsonResponse.id;
+      userId = jsonResponse.id;
 
-    // POST request to add tracks to a playlist
-    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-      headers: headers,
-      method: 'POST',
-      body: JSON.stringify({uris: trackURIs})
-      });
-     })
-    })
+      // POST request to create new playlist
+      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        headers: headers,
+        method: 'POST',
+        body: JSON.stringify({ name: playlistName })
+      }).then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Request failed!');
+      }).then(jsonResponse => {
+        const playlistId = jsonResponse.id;
+
+      // POST request to add tracks to a playlist
+      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+        headers: headers,
+        method: 'POST',
+        body: JSON.stringify({uris: trackURIs})
+        });
+       })
+      })
   }
 
 

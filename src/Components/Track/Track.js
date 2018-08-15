@@ -1,7 +1,7 @@
 import React from 'react';
 import './Track.css';
 
-class Track extends from React.Component{
+class Track extends React.Component {
   constructor(props){
     super(props);
     this.addTrack = this.addTrack.bind(this);
@@ -16,12 +16,12 @@ class Track extends from React.Component{
     this.props.onRemove(this.props.track);
   }
 
-  
+
 
   renderAction(){
     if(this.props.isRemoval){
       return <a className = "Track-action" onClick = {this.removeTrack} >-</a>;
-    }else{
+    } else {
       return <a className = "Track-action" onClick = {this.addTrack} >+</a>;
     }
   }
@@ -34,9 +34,10 @@ class Track extends from React.Component{
           <h3>{this.props.track.name}</h3>
           <p>{this.props.track.artist} | {this.props.track.album}</p>
       </div>
-      <a class="Track-action"><!-- + or - will go here --></a>
+      <a class="Track-action">{this.renderAction()}</a>
    </div>
     );
   }
 }
-export default Track;
+
+  export default Track;
