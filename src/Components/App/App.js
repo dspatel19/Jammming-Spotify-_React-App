@@ -64,13 +64,14 @@ class App extends React.Component{
 
   //savePlaylist method is to save the playlist to the Spotify Account
   savePlaylist(){
-    const trackURIs = this.state.playlistTracks.map(track => track.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
+    const trackURIs = this.state.playlistTracks.map(track => {
+      return track.uri;
+    });
+    Spotify.savePlaylist(this.state.playlistName, trackURIs);
       this.setState({
         playlistName: 'New Playlist',
         playlistTracks: []
        });
-    });
   }
 
   search(term){
