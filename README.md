@@ -4,21 +4,18 @@ Project URL Link:
 http://jammming-spotifyreactapp-dspatel19.surge.sh
 The jammming project is deployed using surge.
 
-
 Introduction
 This project is about a React web application called Jammming. By interacting with the Spotify API to build a website that allows users to search the Spotify library, create a custom playlist, then save it to their Spotify account.
-
 
 Steps:
 Input a song
 Click search button
-Authorizing spotify access token through Facebook or login (Do not need the step if you already authorized)
+Authorizing spotify access token (Do not need the step if you already authorized)
 Add songs you like from search result to playlist
 Name a title for the playlist
 Click the button "Save to Spotify"
 You will see in your Spotify account, there is a new playlist added
 Where to use Jammming
-
 
 
 Features
@@ -31,5 +28,5 @@ Add Song to a Custom Playlist — users can add a track to their playlist by sel
 Remove Song from Custom Playlist — users can remove a track from their playlist by selecting a - sign on the right side of the track's display container.
 Change Playlist Title — users can change the title of their custom playlist.
 Save Playlist to Account — users can save their custom playlist by clicking a button called SAVE TO SPOTIFY.
-Screenshot
-alt tag
+
+
