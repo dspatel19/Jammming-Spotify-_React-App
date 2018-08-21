@@ -1,7 +1,7 @@
 let accessToken = '';
 
 const clientID = '0dc07a46aa994ab28d4a6d248448cb82';
-const redirectURI = 'https://jammming-spotifyreactapp-dspatel19.surge.sh';
+const redirectURI = 'http://jammming-spotifyreactapp-dspatel19.surge.sh';
 
 const Spotify =  {
 
